@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - 5 Frames Photography</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-number">5</span>
+                <span class="logo-text">Frames Admin</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="portfolio">
+                <i class="fas fa-images"></i>
+                <span>Portfolio</span>
+            </a>
+            <a href="#" class="nav-item" data-section="team">
+                <i class="fas fa-users"></i>
+                <span>Team Members</span>
+            </a>
+            <a href="#" class="nav-item" data-section="blogs">
+                <i class="fas fa-blog"></i>
+                <span>Blog Posts</span>
+            </a>
+            <a href="#" class="nav-item" data-section="testimonials">
+                <i class="fas fa-quote-left"></i>
+                <span>Testimonials</span>
+            </a>
+            <a href="#" class="nav-item" data-section="services">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Services</span>
+            </a>
+            <a href="#" class="nav-item" data-section="inquiries">
+                <i class="fas fa-envelope"></i>
+                <span>Inquiries</span>
+            </a>
+            <a href="#" class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Admin</div>
+                    <div class="user-email" id="userEmail">admin@example.com</div>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <button class="btn-menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="header-actions">
+                <a href="index.html" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-external-link-alt"></i> View Website
+                </a>
+            </div>
+        </header>
+        
+        <!-- Dashboard Section -->
+        <section id="section-dashboard" class="content-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #667eea;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 id="totalInquiries">0</h3>
+                        <p>Total Inquiries</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #f093fb;">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 id="totalPortfolio">0</h3>
+                        <p>Portfolio Items</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #4facfe;">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 id="totalBlogs">0</h3>
+                        <p>Blog Posts</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #43e97b;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 id="totalTeam">0</h3>
+                        <p>Team Members</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recent Inquiries</h2>
+                        <a href="#" class="card-link" data-section="inquiries">View All</a>
+                    </div>
+                    <div class="card-body" id="recentInquiries">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" data-section="portfolio">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Portfolio Item</span>
+                            </button>
+                            <button class="quick-action-btn" data-section="team">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Add Team Member</span>
+                            </button>
+                            <button class="quick-action-btn" data-section="blogs">
+                                <i class="fas fa-pen"></i>
+                                <span>Write Blog Post</span>
+                            </button>
+                            <button class="quick-action-btn" data-section="testimonials">
+                                <i class="fas fa-quote-left"></i>
+                                <span>Add Testimonial</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="section-portfolio" class="content-section">
+            <div class="section-header">
+                <h2>Portfolio Management</h2>
+                <button class="btn btn-primary" id="addPortfolioBtn">
+                    <i class="fas fa-plus"></i> Add Portfolio Item
+                </button>
+            </div>
+            <div id="portfolioList" class="grid-list">
+                <p class="loading">Loading portfolio items...</p>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <section id="section-team" class="content-section">
+            <div class="section-header">
+                <h2>Team Members</h2>
+                <button class="btn btn-primary" id="addTeamBtn">
+                    <i class="fas fa-user-plus"></i> Add Team Member
+                </button>
+            </div>
+            <div id="teamList" class="grid-list">
+                <p class="loading">Loading team members...</p>
+            </div>
+        </section>
+        
+        <!-- Blog Section -->
+        <section id="section-blogs" class="content-section">
+            <div class="section-header">
+                <h2>Blog Posts</h2>
+                <button class="btn btn-primary" id="addBlogBtn">
+                    <i class="fas fa-pen"></i> Write New Post
+                </button>
+            </div>
+            <div id="blogList" class="list">
+                <p class="loading">Loading blog posts...</p>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="section-testimonials" class="content-section">
+            <div class="section-header">
+                <h2>Testimonials</h2>
+                <button class="btn btn-primary" id="addTestimonialBtn">
+                    <i class="fas fa-plus"></i> Add Testimonial
+                </button>
+            </div>
+            <div id="testimonialList" class="grid-list">
+                <p class="loading">Loading testimonials...</p>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="section-services" class="content-section">
+            <div class="section-header">
+                <h2>Services Management</h2>
+                <button class="btn btn-primary" id="addServiceBtn">
+                    <i class="fas fa-plus"></i> Add Service
+                </button>
+            </div>
+            <div id="serviceList" class="grid-list">
+                <p class="loading">Loading services...</p>
+            </div>
+        </section>
+        
+        <!-- Inquiries Section -->
+        <section id="section-inquiries" class="content-section">
+            <div class="section-header">
+                <h2>Contact Form Inquiries</h2>
+                <div class="header-filters">
+                    <select id="inquiryFilter" class="filter-select">
+                        <option value="all">All Inquiries</option>
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+            </div>
+            <div id="inquiryList" class="list">
+                <p class="loading">Loading inquiries...</p>
+            </div>
+        </section>
+        
+        <!-- Settings Section -->
+        <section id="section-settings" class="content-section">
+            <div class="section-header">
+                <h2>Website Settings</h2>
+            </div>
+            <div class="settings-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Contact Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="contactInfoForm">
+                            <div class="form-group">
+                                <label>Primary Phone</label>
+                                <input type="tel" id="primaryPhone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Secondary Phone</label>
+                                <input type="tel" id="secondaryPhone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="contactEmail" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Social Media Links</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="socialLinksForm">
+                            <div class="form-group">
+                                <label><i class="fab fa-instagram"></i> Instagram</label>
+                                <input type="url" id="instagram" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fab fa-facebook"></i> Facebook</label>
+                                <input type="url" id="facebook" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fab fa-youtube"></i> YouTube</label>
+                                <input type="url" id="youtube" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Modal for Add/Edit -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Item</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+    
+    <script src="admin-script.js"></script>
+</body>
+</html>
+
