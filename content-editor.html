@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Editor - 5 Frames Photography</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <style>
+        .editor-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .json-editor {
+            width: 100%;
+            min-height: 600px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f8f9fa;
+            resize: vertical;
+        }
+        
+        .editor-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 3000;
+            min-width: 300px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .notification.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.error {
+            border-left-color: #dc3545;
+            color: #dc3545;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .help-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 6px;
+            border-left: 3px solid #ffc107;
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .quick-link-btn {
+            padding: 15px;
+            background: #f8f9ff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quick-link-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <div class="section-card">
+            <h1><i class="fas fa-edit"></i> Website Content Editor</h1>
+            <p class="help-text">
+                <i class="fas fa-info-circle"></i> 
+                <strong>Instructions:</strong> Edit the JSON below to update your website content. 
+                All changes are saved in <code>website-content.json</code>. 
+                Make sure to keep the JSON format valid (use proper quotes, commas, and brackets).
+            </p>
+            
+            <div class="editor-actions">
+                <button class="btn btn-primary" id="saveBtn">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <button class="btn btn-secondary" id="formatBtn">
+                    <i class="fas fa-align-left"></i> Format JSON
+                </button>
+                <button class="btn btn-secondary" id="validateBtn">
+                    <i class="fas fa-check-circle"></i> Validate JSON
+                </button>
+                <button class="btn btn-danger" id="resetBtn">
+                    <i class="fas fa-undo"></i> Reset to Last Saved
+                </button>
+                <a href="admin-dashboard.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+            
+            <div class="quick-links">
+                <button class="quick-link-btn" onclick="scrollToSection('portfolio')">
+                    <i class="fas fa-images"></i><br>Portfolio
+                </button>
+                <button class="quick-link-btn" onclick="scrollToSection('team')">
+                    <i class="fas fa-users"></i><br>Team
+                </button>
+                <button class="quick-link-btn" onclick="scrollToSection('testimonials')">
+                    <i class="fas fa-quote-left"></i><br>Testimonials
+                </button>
+                <button class="quick-link-btn" onclick="scrollToSection('blogs')">
+                    <i class="fas fa-blog"></i><br>Blogs
+                </button>
+                <button class="quick-link-btn" onclick="scrollToSection('services')">
+                    <i class="fas fa-concierge-bell"></i><br>Services
+                </button>
+                <button class="quick-link-btn" onclick="scrollToSection('contact')">
+                    <i class="fas fa-phone"></i><br>Contact
+                </button>
+            </div>
+            
+            <textarea id="jsonEditor" class="json-editor" placeholder="Loading content..."></textarea>
+            
+            <div style="margin-top: 20px;">
+                <h3>📝 Quick Guide:</h3>
+                <ul style="line-height: 2; color: #666;">
+                    <li><strong>Portfolio:</strong> Edit "portfolio" section - add/remove items, change images</li>
+                    <li><strong>Team:</strong> Edit "team" section - update member info</li>
+                    <li><strong>Testimonials:</strong> Edit "testimonials" section - add client reviews</li>
+                    <li><strong>Contact:</strong> Edit "siteInfo.contact" - update phone/email</li>
+                    <li><strong>Social Media:</strong> Edit "siteInfo.socialMedia" - update links</li>
+                    <li><strong>Images:</strong> Use image URLs (upload to /images/ folder or use external URLs)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCm0NaPSeiBYoJNOV-Woz1Iae5YEc7D0gI",
+            authDomain: "frames-photography-26453.firebaseapp.com",
+            projectId: "frames-photography-26453",
+            storageBucket: "frames-photography-26453.firebasestorage.app",
+            messagingSenderId: "24673451515",
+            appId: "1:24673451515:web:fbbbf05c67b7153ca2df5e"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        
+        // Check authentication
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'admin-login.html';
+            } else {
+                loadContent();
+            }
+        });
+        
+        let originalContent = '';
+        
+        // Load content from JSON file
+        async function loadContent() {
+            try {
+                const response = await fetch('website-content.json');
+                const content = await response.json();
+                originalContent = JSON.stringify(content, null, 2);
+                document.getElementById('jsonEditor').value = originalContent;
+            } catch (error) {
+                console.error('Error loading content:', error);
+                showNotification('Error loading content file', 'error');
+            }
+        }
+        
+        // Save content
+        document.getElementById('saveBtn').addEventListener('click', async () => {
+            const jsonText = document.getElementById('jsonEditor').value;
+            
+            try {
+                // Validate JSON
+                JSON.parse(jsonText);
+                
+                // Create a download link
+                const blob = new Blob([jsonText], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'website-content.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                originalContent = jsonText;
+                showNotification('✅ Content saved! Download the file and replace website-content.json', 'success');
+            } catch (error) {
+                showNotification('❌ Invalid JSON format! ' + error.message, 'error');
+            }
+        });
+        
+        // Format JSON
+        document.getElementById('formatBtn').addEventListener('click', () => {
+            try {
+                const json = JSON.parse(document.getElementById('jsonEditor').value);
+                document.getElementById('jsonEditor').value = JSON.stringify(json, null, 2);
+                showNotification('✅ JSON formatted successfully', 'success');
+            } catch (error) {
+                showNotification('❌ Invalid JSON format! ' + error.message, 'error');
+            }
+        });
+        
+        // Validate JSON
+        document.getElementById('validateBtn').addEventListener('click', () => {
+            try {
+                JSON.parse(document.getElementById('jsonEditor').value);
+                showNotification('✅ JSON is valid!', 'success');
+            } catch (error) {
+                showNotification('❌ Invalid JSON! ' + error.message, 'error');
+            }
+        });
+        
+        // Reset to original
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset all changes?')) {
+                document.getElementById('jsonEditor').value = originalContent;
+                showNotification('✅ Reset to last saved version', 'success');
+            }
+        });
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Scroll to section
+        function scrollToSection(section) {
+            const editor = document.getElementById('jsonEditor');
+            const text = editor.value;
+            const searchText = `"${section}"`;
+            const index = text.indexOf(searchText);
+            
+            if (index !== -1) {
+                editor.focus();
+                editor.setSelectionRange(index, index + searchText.length);
+                editor.scrollTop = (index / text.length) * editor.scrollHeight;
+                showNotification(`Jumped to ${section} section`, 'success');
+            }
+        }
+    </script>
+</body>
+</html>
+

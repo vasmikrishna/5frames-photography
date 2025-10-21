@@ -283,3 +283,4 @@ Your photography website now has a **complete professional CMS**! You can:
 
 **Your admin panel is production-ready! 🎉📸**
 
+
