@@ -127,13 +127,15 @@ animateOnScroll.forEach(element => {
 // FIREBASE CONFIGURATION
 // ============================================
 const firebaseConfig = {
-    apiKey: "AIzaSyDHBXOPQHXOPQHXOPQHXOPQHXOPQHXOPQH", // Replace with your actual API Key
+    apiKey: "AIzaSyCm0NaPSeiBYoJNOV-Woz1Iae5YEc7D0gI",
     authDomain: "frames-photography-26453.firebaseapp.com",
     projectId: "frames-photography-26453",
-    storageBucket: "frames-photography-26453.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // Replace with actual ID
-    appId: "YOUR_APP_ID" // Replace with actual App ID
+    storageBucket: "frames-photography-26453.firebasestorage.app",
+    messagingSenderId: "24673451515",
+    appId: "1:24673451515:web:fbbbf05c67b7153ca2df5e",
+    measurementId: "G-3TZ6HM3SH7"
 };
+
 
 // Initialize Firebase
 let db;
