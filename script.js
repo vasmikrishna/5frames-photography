@@ -3,6 +3,30 @@
 // ============================================
 
 // ============================================
+// LOAD WEBSITE DATA FROM JSON
+// ============================================
+let websiteData = null;
+
+async function loadWebsiteData() {
+    try {
+        const response = await fetch('website-data.json');
+        websiteData = await response.json();
+        console.log('✅ Website data loaded successfully');
+        console.log('📊 Data available:', {
+            portfolio: websiteData.portfolio.length + ' items',
+            team: websiteData.team.length + ' members',
+            blogs: websiteData.blogs.length + ' posts',
+            testimonials: websiteData.testimonials.length + ' reviews'
+        });
+    } catch (error) {
+        console.error('❌ Error loading website data:', error);
+    }
+}
+
+// Load data immediately
+loadWebsiteData();
+
+// ============================================
 // NAVIGATION MENU TOGGLE
 // ============================================
 const navToggle = document.getElementById('navToggle');
