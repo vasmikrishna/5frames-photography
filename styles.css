@@ -1663,7 +1663,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -1690,8 +1690,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-image-container img {
-    max-width: 100%;
-    max-height: calc(90vh - 350px);
+    max-width: 90%;
+    max-height: calc(90vh - 280px);
     object-fit: contain;
     border: 3px solid var(--accent-color);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
@@ -1709,7 +1709,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-image-container p {
     color: rgba(255, 215, 0, 0.9);
     font-size: 1.2rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: center;
     font-style: italic;
     letter-spacing: 1px;
