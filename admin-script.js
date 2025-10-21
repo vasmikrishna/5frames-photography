@@ -13,7 +13,16 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
-const storage = firebase.storage();
+
+// Helper function to convert file to base64
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
 
 let currentUser = null;
 
@@ -253,12 +262,10 @@ async function addPortfolioItem() {
     }
     
     try {
-        showNotification('Uploading image...', 'info');
+        showNotification('Processing image...', 'info');
         
-        // Upload image to Firebase Storage
-        const storageRef = storage.ref(`portfolio/${Date.now()}_${imageFile.name}`);
-        await storageRef.put(imageFile);
-        const imageUrl = await storageRef.getDownloadURL();
+        // Convert image to base64
+        const imageUrl = await fileToBase64(imageFile);
         
         // Save to Firestore
         await db.collection('portfolio').add({
@@ -369,11 +376,10 @@ async function addTeamMember() {
     }
     
     try {
-        showNotification('Uploading photo...', 'info');
+        showNotification('Processing photo...', 'info');
         
-        const storageRef = storage.ref(`team/${Date.now()}_${imageFile.name}`);
-        await storageRef.put(imageFile);
-        const imageUrl = await storageRef.getDownloadURL();
+        // Convert image to base64
+        const imageUrl = await fileToBase64(imageFile);
         
         await db.collection('team').add({
             name,
@@ -479,9 +485,8 @@ async function addBlogPost() {
     try {
         showNotification('Publishing post...', 'info');
         
-        const storageRef = storage.ref(`blogs/${Date.now()}_${imageFile.name}`);
-        await storageRef.put(imageFile);
-        const imageUrl = await storageRef.getDownloadURL();
+        // Convert image to base64
+        const imageUrl = await fileToBase64(imageFile);
         
         await db.collection('blogs').add({
             title,
@@ -862,4 +867,5 @@ function editTestimonial(id) {
 function editService(id) {
     showNotification('Edit feature coming soon!', 'info');
 }
+
 
