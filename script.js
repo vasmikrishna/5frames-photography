@@ -124,12 +124,36 @@ animateOnScroll.forEach(element => {
 });
 
 // ============================================
-// CONTACT FORM HANDLING
+// FIREBASE CONFIGURATION
+// ============================================
+const firebaseConfig = {
+    apiKey: "AIzaSyDHBXOPQHXOPQHXOPQHXOPQHXOPQHXOPQH", // Replace with your actual API Key
+    authDomain: "frames-photography-26453.firebaseapp.com",
+    projectId: "frames-photography-26453",
+    storageBucket: "frames-photography-26453.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // Replace with actual ID
+    appId: "YOUR_APP_ID" // Replace with actual App ID
+};
+
+// Initialize Firebase
+let db;
+try {
+    if (typeof firebase !== 'undefined') {
+        firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore();
+        console.log('Firebase initialized successfully');
+    }
+} catch (error) {
+    console.error('Firebase initialization error:', error);
+}
+
+// ============================================
+// CONTACT FORM HANDLING WITH FIREBASE
 // ============================================
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Get form data
@@ -139,18 +163,77 @@ if (contactForm) {
             phone: document.getElementById('phone').value,
             shootType: document.getElementById('shootType').value,
             location: document.getElementById('location').value,
-            details: document.getElementById('details').value
+            details: document.getElementById('details').value,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            status: 'new'
         };
         
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', formData);
+        // Disable submit button to prevent double submission
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
         
-        // Show success message
-        alert('Thank you for your inquiry! We will get back to you soon.');
-        
-        // Reset form
-        contactForm.reset();
+        try {
+            // Save to Firebase Firestore
+            if (db) {
+                await db.collection('inquiries').add(formData);
+                
+                // Show success message
+                showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
+                
+                // Reset form
+                contactForm.reset();
+            } else {
+                throw new Error('Firebase not initialized');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            showNotification('There was an error submitting your form. Please try again or contact us directly.', 'error');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+        }
     });
+}
+
+// ============================================
+// NOTIFICATION SYSTEM
+// ============================================
+function showNotification(message, type = 'success') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">&times;</button>
+    `;
+    
+    // Add to body
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => notification.classList.add('show'), 10);
+    
+    // Close button functionality
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.addEventListener('click', () => removeNotification(notification));
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => removeNotification(notification), 5000);
+}
+
+function removeNotification(notification) {
+    notification.classList.remove('show');
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 300);
 }
 
 // ============================================
