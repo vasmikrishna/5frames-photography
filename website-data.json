@@ -31,47 +31,182 @@
     {
       "title": "The Golden Hour Wedding",
       "category": "weddings",
-      "image": "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop",
+      "description": "Beautiful outdoor ceremony at sunset",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop",
+          "caption": "Beautiful outdoor ceremony at sunset"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop",
+          "caption": "Wedding rings close-up"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=800&fit=crop",
+          "caption": "Couple holding hands"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=1200&h=800&fit=crop",
+          "caption": "Wedding decoration details"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=800&fit=crop",
+          "caption": "The happy couple portrait"
+        }
+      ]
     },
     {
       "title": "Love in Every Ritual",
       "category": "weddings",
-      "image": "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=400&fit=crop",
+      "description": "Traditional wedding ceremony",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=800&fit=crop",
+          "caption": "Traditional wedding ceremony"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&h=800&fit=crop",
+          "caption": "Bride getting ready"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=800&fit=crop",
+          "caption": "Wedding venue decoration"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop",
+          "caption": "Celebration moments"
+        }
+      ]
     },
     {
       "title": "Playful Beginnings",
       "category": "babies",
-      "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=400&fit=crop",
+      "description": "Adorable newborn photoshoot",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&h=800&fit=crop",
+          "caption": "Adorable newborn photoshoot"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1200&h=800&fit=crop",
+          "caption": "Cute baby sleeping"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&h=800&fit=crop",
+          "caption": "Baby's first smile"
+        }
+      ]
     },
     {
       "title": "First Smiles",
       "category": "babies",
-      "image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop",
+      "description": "Capturing precious baby moments",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=800&fit=crop",
+          "caption": "Capturing precious baby moments"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1519689373023-dd07c7988603?w=1200&h=800&fit=crop",
+          "caption": "Baby with parents"
+        }
+      ]
     },
     {
       "title": "Style In Frame",
       "category": "fashion",
-      "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&h=400&fit=crop",
+      "description": "Editorial fashion photography",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&h=800&fit=crop",
+          "caption": "Editorial fashion photography"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=800&fit=crop",
+          "caption": "Fashion model pose"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&h=800&fit=crop",
+          "caption": "Studio fashion shoot"
+        }
+      ]
     },
     {
       "title": "Bold & Beautiful",
       "category": "fashion",
-      "image": "https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?w=600&h=400&fit=crop",
+      "description": "Modern fashion photography",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?w=1200&h=800&fit=crop",
+          "caption": "Modern fashion photography"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&h=800&fit=crop",
+          "caption": "Fashion portrait"
+        }
+      ]
     },
     {
       "title": "Wanderlust Trails",
       "category": "travel",
-      "image": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&h=400&fit=crop",
+      "description": "Adventure travel photography",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1200&h=800&fit=crop",
+          "caption": "Adventure travel photography"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop",
+          "caption": "Mountain landscape"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop",
+          "caption": "Travel destination"
+        }
+      ]
     },
     {
       "title": "Journey Captured",
       "category": "travel",
-      "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop",
+      "description": "Travel moments and destinations",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop",
+          "caption": "Travel moments and destinations"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&h=800&fit=crop",
+          "caption": "Scenic view"
+        }
+      ]
     },
     {
       "title": "Corporate Excellence",
       "category": "corporate",
-      "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop"
+      "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop",
+      "description": "Professional corporate event",
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=800&fit=crop",
+          "caption": "Professional corporate event"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&h=800&fit=crop",
+          "caption": "Business meeting"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1560439514-4e9645039924?w=1200&h=800&fit=crop",
+          "caption": "Team collaboration"
+        }
+      ]
     }
   ],
   

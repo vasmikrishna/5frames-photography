@@ -70,11 +70,24 @@ Find `"portfolio"` array, add new item:
   {
     "title": "Beautiful Wedding",           ← Title
     "category": "weddings",                 ← weddings/babies/fashion/travel/corporate
-    "image": "https://your-image-url.jpg"   ← Image URL
+    "image": "https://your-image-url.jpg",  ← Thumbnail image URL
+    "description": "Short description",     ← Description
+    "gallery": [                            ← Photos to show in lightbox
+      {
+        "url": "https://photo1.jpg",        ← Full size photo URL
+        "caption": "Photo description"      ← Caption for this photo
+      },
+      {
+        "url": "https://photo2.jpg",
+        "caption": "Another photo"
+      }
+    ]
   },
   ...existing items...
 ]
 ```
+
+**Note:** Each portfolio item can have multiple photos in its gallery. These photos will appear in the lightbox when clicking on that portfolio item.
 
 ### **4. Add Team Member**
 
