@@ -176,52 +176,61 @@ try {
 // ============================================
 // CONTACT FORM HANDLING WITH FIREBASE
 // ============================================
-const contactForm = document.getElementById('contactForm');
+// const contactForm = document.getElementById('contactForm');
 
+// if (contactForm) {
+//     contactForm.addEventListener('submit', async function(e) {
+//         e.preventDefault();
+        
+//         // Get form data
+//         const formData = {
+//             name: document.getElementById('name').value,
+//             email: document.getElementById('email').value,
+//             phone: document.getElementById('phone').value,
+//             shootType: document.getElementById('shootType').value,
+//             location: document.getElementById('location').value,
+//             details: document.getElementById('details').value,
+//             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+//             status: 'new'
+//         };
+        
+//         // Disable submit button to prevent double submission
+//         const submitBtn = contactForm.querySelector('button[type="submit"]');
+//         const originalBtnText = submitBtn.textContent;
+//         submitBtn.disabled = true;
+//         submitBtn.textContent = 'Submitting...';
+        
+//         try {
+//             // Save to Firebase Firestore
+//             if (db) {
+//                 await db.collection('inquiries').add(formData);
+                
+//                 // Show success message
+//                 showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
+                
+//                 // Reset form
+//                 contactForm.reset();
+//             } else {
+//                 throw new Error('Firebase not initialized');
+//             }
+//         } catch (error) {
+//             console.error('Error submitting form:', error);
+//             showNotification('There was an error submitting your form. Please try again or contact us directly.', 'error');
+//         } finally {
+//             // Re-enable submit button
+//             submitBtn.disabled = false;
+//             submitBtn.textContent = originalBtnText;
+//         }
+//     });
+// }
+
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            shootType: document.getElementById('shootType').value,
-            location: document.getElementById('location').value,
-            details: document.getElementById('details').value,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            status: 'new'
-        };
-        
-        // Disable submit button to prevent double submission
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-        
-        try {
-            // Save to Firebase Firestore
-            if (db) {
-                await db.collection('inquiries').add(formData);
-                
-                // Show success message
-                showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
-                
-                // Reset form
-                contactForm.reset();
-            } else {
-                throw new Error('Firebase not initialized');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            showNotification('There was an error submitting your form. Please try again or contact us directly.', 'error');
-        } finally {
-            // Re-enable submit button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-        }
-    });
+  contactForm.addEventListener('submit', function() {
+    setTimeout(() => {
+      alert('Thank you! Your enquiry has been submitted.');
+    }, 500);
+  });
 }
 
 // ============================================
