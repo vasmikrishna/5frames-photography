@@ -948,8 +948,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
 }
 
 .team-member {
@@ -959,7 +959,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team-member:nth-child(even) {
-    animation: slide-in-right 0.6s ease;
+    animation: slide-in-left 0.6s ease;
 }
 
 .team-member:hover {
@@ -969,15 +969,18 @@ h1, h2, h3, h4, h5, h6 {
 .member-image {
     margin-bottom: 1.5rem;
     overflow: hidden;
-    border: 5px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
     position: relative;
+    width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 .member-image::after {
     content: '';
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: -10px;
+    left: -10px;
     right: -10px;
     bottom: -10px;
     border: 3px solid var(--accent-color);
@@ -986,7 +989,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .member-image img {
     width: 100%;
-    height: 320px;
+    height: 100%;
     object-fit: cover;
     transition: var(--transition);
     filter: grayscale(30%);
@@ -1206,11 +1209,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.2rem;
     position: relative;
     border: 5px solid var(--primary-color);
+    cursor: pointer;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .reel-thumbnail img {
     width: 100%;
-    height: 380px;
+    height: 300px;
     object-fit: cover;
     transition: var(--transition);
     filter: grayscale(20%);
@@ -1221,11 +1228,12 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5rem;
+    font-size: 3rem;
     color: var(--accent-color);
     opacity: 0.9;
     transition: var(--transition);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+    pointer-events: none;
 }
 
 .reel-card:hover .play-button {
