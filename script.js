@@ -224,14 +224,56 @@ try {
 //     });
 // }
 
+// const contactForm = document.getElementById('contactForm');
+// if (contactForm) {
+//   contactForm.addEventListener('submit', function() {
+//     setTimeout(() => {
+//       alert('Thank you! Your enquiry has been submitted.');
+//     }, 500);
+//   });
+// }
+
+
+
+
 const contactForm = document.getElementById('contactForm');
+
 if (contactForm) {
-  contactForm.addEventListener('submit', function() {
-    setTimeout(() => {
-      alert('Thank you! Your enquiry has been submitted.');
-    }, 500);
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default redirect
+
+    // Collect form data
+    const formData = new FormData();
+    formData.append("entry.1442983158", document.getElementById('name').value);
+    formData.append("entry.341669773", document.getElementById('email').value);
+    formData.append("entry.223180956", document.getElementById('phone').value);
+    formData.append("entry.880914363", document.getElementById('shootType').value);
+    formData.append("entry.251379235", document.getElementById('location').value);
+    formData.append("entry.126854786", document.getElementById('date').value);
+    formData.append("entry.115675889", document.getElementById('details').value);
+
+    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScUI7jj4-CxeWdUW0FjKaIdn5alrxQKH504PpJP0-768BJbLA/formResponse";
+
+    // Submit silently
+    fetch(googleFormUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(() => {
+      // Call your custom notification function
+      showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
+
+      // Reset the form
+      contactForm.reset();
+    })
+    .catch(err => {
+      console.error('Error submitting the form:', err);
+      showNotification('There was an error submitting your form. Please try again.', 'error');
+    });
   });
 }
+
 
 // ============================================
 // NOTIFICATION SYSTEM
