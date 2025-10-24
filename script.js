@@ -580,6 +580,25 @@ reelCards.forEach(card => {
     });
 });
 
+
+document.querySelectorAll('.reel-thumbnail').forEach(thumbnail => {
+  thumbnail.addEventListener('click', function() {
+    const videoUrl = this.dataset.youtube;
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('src', videoUrl + "?autoplay=1");
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+
+    // Remove thumbnail content and insert iframe
+    this.innerHTML = '';
+    this.appendChild(iframe);
+  });
+});
+
+
 // ============================================
 // COUNTER ANIMATION (FOR STATS IF ADDED)
 // ============================================
