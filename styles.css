@@ -361,6 +361,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: var(--text-light);
     overflow: hidden;
+    padding-top: 150px;
 }
 
 .hero-background {
@@ -394,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     line-height: 1;
@@ -404,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-subtitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     margin-bottom: 2rem;
     color: var(--text-light);
@@ -533,7 +534,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-gray);
 }
 
-.mission {
+/* .mission {
     margin: 2.5rem 0;
     padding: 2.5rem;
     background: var(--primary-color);
@@ -579,7 +580,72 @@ h1, h2, h3, h4, h5, h6 {
 .values-list i {
     color: var(--accent-color);
     font-size: 1.3rem;
+} */
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem; /* spacing between the two sections */
+    flex-wrap: wrap; /* makes it responsive on smaller screens */
 }
+
+/* Make each section take half width */
+.mission,
+.values {
+    flex: 1;
+    min-width: 300px; /* ensures they don't shrink too small */
+}
+
+/* Your existing styles below */
+.mission {
+    margin: 2.5rem 2.;
+    padding: 2.5rem;
+    background: var(--primary-color);
+    border-left: 5px solid var(--accent-color);
+    color: var(--text-light);
+}
+
+.mission h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+
+.mission-statement {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.values h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.values-list {
+    list-style: none;
+}
+
+.values-list li {
+    padding: 0.45rem 0;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.values-list i {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+}
+
 
 .about-image img {
     width: 100%;
@@ -773,12 +839,12 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     cursor: pointer;
     transition: var(--transition);
-    border: 5px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     animation: slide-up 0.6s ease;
 }
 
 .portfolio-item:hover {
-    animation: float 2s ease infinite;
+    animation: float 1s ease infinite;
 }
 
 .portfolio-item.hidden {
@@ -1503,7 +1569,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     z-index: 10000;
     align-items: center;
@@ -1523,7 +1589,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-modal-content {
     width: 90%;
     max-width: 1600px;
-    height: 90vh;
+    height: 90%;
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     border: 2px solid var(--accent-color);
     box-shadow: 0 25px 50px -12px rgba(255, 215, 0, 0.25),
@@ -1552,23 +1618,23 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-modal-content::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 3px solid var(--accent-color);
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--accent-color);
     z-index: 1;
     pointer-events: none;
 }
 
 .gallery-modal-content::before {
-    top: 20px;
-    left: 20px;
+    top: 10px;
+    left: 10px;
     border-right: none;
     border-bottom: none;
 }
 
 .gallery-modal-content::after {
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     border-left: none;
     border-top: none;
 }
@@ -1585,7 +1651,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-header {
-    padding: 2.5rem 3rem;
+    padding: 1.2rem 3rem;
     background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
     border-bottom: 1px solid rgba(255, 215, 0, 0.3);
     display: flex;
@@ -1597,7 +1663,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .gallery-info h2 {
     color: var(--accent-color);
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     letter-spacing: 3px;
     font-family: var(--font-display);
@@ -1698,7 +1764,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-image-container img {
-    max-width: 90%;
+    max-width: 100%;
     max-height: calc(90vh - 280px);
     object-fit: contain;
     border: 3px solid var(--accent-color);
@@ -1716,8 +1782,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .gallery-image-container p {
     color: rgba(255, 215, 0, 0.9);
-    font-size: 1.2rem;
-    margin-top: 1rem;
+    font-size: 0rem;
+    margin-top: 0rem;
     text-align: center;
     font-style: italic;
     letter-spacing: 1px;
@@ -1732,8 +1798,8 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(10px);
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1764,20 +1830,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-nav:hover::before {
-    width: 200%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
 }
 
 .gallery-prev {
-    left: 3rem;
+    left: 1.5rem;
 }
 
 .gallery-next {
-    right: 3rem;
+    right: 1.5rem;
 }
 
 .gallery-footer {
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
     background: linear-gradient(0deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
     border-top: 1px solid rgba(255, 215, 0, 0.3);
     display: flex;

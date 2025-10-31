@@ -356,39 +356,69 @@ window.addEventListener('scroll', () => {
 // ============================================
 const galleryData = {
     weddings: [
-        { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop', title: 'The Golden Hour Wedding', caption: 'Beautiful outdoor ceremony at sunset' },
-        { src: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=800&fit=crop', title: 'Love in Every Ritual', caption: 'Traditional wedding celebration' },
-        { src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=800&fit=crop', title: 'First Look Moment', caption: 'Emotional first look before ceremony' },
-        { src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=800&fit=crop', title: 'Wedding Celebration', caption: 'Reception and celebration moments' },
-        { src: 'https://images.unsplash.com/photo-1594587460956-ae6c90a0c45c?w=1200&h=800&fit=crop', title: 'Romantic Portraits', caption: 'Couple portraits in nature' }
+        { src: 'assets/wedding/1.png?w=600&h=400&fit=crop' },
+        // { src: 'assets/wedding/2.jpg?w=600&h=400&fit=crop', title: 'Love in Every Ritual', caption: 'Traditional wedding celebration' },
+        { src: 'assets/wedding/2.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/16.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/3.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/4.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/5.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/6.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/7.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/8.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/9.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/10.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/11.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/12.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/13.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/14.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding/15.jpg?w=600&h=400&fit=crop' }
     ],
-    babies: [
-        { src: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&h=800&fit=crop', title: 'Playful Beginnings', caption: 'Newborn lifestyle photography' },
-        { src: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=800&fit=crop', title: 'First Smiles', caption: 'Precious baby moments' },
-        { src: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1200&h=800&fit=crop', title: 'Sweet Dreams', caption: 'Peaceful sleeping baby' },
-        { src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&h=800&fit=crop', title: 'Family Love', caption: 'Parents with newborn' },
-        { src: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&h=800&fit=crop', title: 'Tiny Hands', caption: 'Detail shots of baby features' }
+    preweddings: [
+        { src: 'assets/wedding_formalities/1.jpg?w=600&h=400&fit=crop' },
+        // { src: 'assets/wedding/2.jpg?w=600&h=400&fit=crop', title: 'Love in Every Ritual', caption: 'Traditional wedding celebration' },
+        { src: 'assets/wedding_formalities/22.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/16.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/3.png?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/4.png?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/5.png?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/6.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/7.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/8.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/9.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/10.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/11.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/12.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/13.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/14.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/15.jpg?w=600&h=400&fit=crop' }
     ],
-    fashion: [
-        { src: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&h=800&fit=crop', title: 'Style In Frame', caption: 'Editorial fashion photography' },
-        { src: 'https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?w=1200&h=800&fit=crop', title: 'Bold & Beautiful', caption: 'High fashion modeling shoot' },
-        { src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&h=800&fit=crop', title: 'Urban Fashion', caption: 'Street style photography' },
-        { src: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=800&fit=crop', title: 'Elegant Poses', caption: 'Studio fashion portraits' },
-        { src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&h=800&fit=crop', title: 'Fashion Details', caption: 'Close-up styling shots' }
-    ],
-    travel: [
-        { src: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1200&h=800&fit=crop', title: 'Wanderlust Trails', caption: 'Adventure travel photography' },
-        { src: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop', title: 'Journey Captured', caption: 'Destination portraits' },
-        { src: 'https://images.unsplash.com/photo-1530991808291-2f5d6c7c6d67?w=1200&h=800&fit=crop', title: 'Beach Memories', caption: 'Coastal photography' },
-        { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop', title: 'Mountain Views', caption: 'Landscape and travel' },
-        { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop', title: 'Ocean Dreams', caption: 'Seaside adventures' }
-    ],
-    corporate: [
-        { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=800&fit=crop', title: 'Corporate Excellence', caption: 'Professional business events' },
-        { src: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&h=800&fit=crop', title: 'Team Success', caption: 'Corporate team photography' },
-        { src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=800&fit=crop', title: 'Conference Coverage', caption: 'Event documentation' },
-        { src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=800&fit=crop', title: 'Business Portraits', caption: 'Professional headshots' },
-        { src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&h=800&fit=crop', title: 'Office Life', caption: 'Workplace photography' }
+    // fashion: [
+    //     { src: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&h=800&fit=crop', title: 'Style In Frame', caption: 'Editorial fashion photography' },
+    //     { src: 'https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?w=1200&h=800&fit=crop', title: 'Bold & Beautiful', caption: 'High fashion modeling shoot' },
+    //     { src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&h=800&fit=crop', title: 'Urban Fashion', caption: 'Street style photography' },
+    //     { src: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=800&fit=crop', title: 'Elegant Poses', caption: 'Studio fashion portraits' },
+    //     { src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&h=800&fit=crop', title: 'Fashion Details', caption: 'Close-up styling shots' }
+    // ],
+    // travel: [
+    //     { src: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1200&h=800&fit=crop', title: 'Wanderlust Trails', caption: 'Adventure travel photography' },
+    //     { src: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop', title: 'Journey Captured', caption: 'Destination portraits' },
+    //     { src: 'https://images.unsplash.com/photo-1530991808291-2f5d6c7c6d67?w=1200&h=800&fit=crop', title: 'Beach Memories', caption: 'Coastal photography' },
+    //     { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop', title: 'Mountain Views', caption: 'Landscape and travel' },
+    //     { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop', title: 'Ocean Dreams', caption: 'Seaside adventures' }
+    // ],
+    // corporate: [
+    //     { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=800&fit=crop', title: 'Corporate Excellence', caption: 'Professional business events' },
+    //     { src: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&h=800&fit=crop', title: 'Team Success', caption: 'Corporate team photography' },
+    //     { src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=800&fit=crop', title: 'Conference Coverage', caption: 'Event documentation' },
+    //     { src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=800&fit=crop', title: 'Business Portraits', caption: 'Professional headshots' },
+    //     { src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&h=800&fit=crop', title: 'Office Life', caption: 'Workplace photography' }
+    // ]
+    events: [
+       { src: 'assets/wedding_formalities/26.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/27.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/28.jpg?w=600&h=400&fit=crop' },
+        { src: 'assets/wedding_formalities/29.jpg?w=600&h=400&fit=crop' }
     ]
 };
 
@@ -408,7 +438,8 @@ portfolioItems.forEach(item => {
         currentImageIndex = 0;
         
         // Open the gallery modal
-        openGallery(title, category);
+        // openGallery(title, category);
+        openGallery(title);
     });
 });
 
@@ -800,31 +831,86 @@ document.querySelectorAll('.specialty-card, .testimonial-card, .blog-card').forE
 // ============================================
 // GLITCH EFFECT ON HOVER FOR TITLES
 // ============================================
-document.querySelectorAll('.section-title').forEach(title => {
-    title.addEventListener('mouseenter', () => {
-        const originalText = title.textContent;
-        let iterations = 0;
-        const maxIterations = 10;
+// document.querySelectorAll('.section-title').forEach(title => {
+//     title.addEventListener('mouseenter', () => {
+//         const originalText = title.textContent;
+//         let iterations = 0;
+//         const maxIterations = 10;
         
-        const glitchInterval = setInterval(() => {
-            title.textContent = originalText
-                .split('')
-                .map((char, index) => {
-                    if (index < iterations) {
-                        return originalText[index];
-                    }
-                    return String.fromCharCode(33 + Math.floor(Math.random() * 94));
-                })
-                .join('');
+//         const glitchInterval = setInterval(() => {
+//             title.textContent = originalText
+//                 .split('')
+//                 .map((char, index) => {
+//                     if (index < iterations) {
+//                         return originalText[index];
+//                     }
+//                     return String.fromCharCode(33 + Math.floor(Math.random() * 94));
+//                 })
+//                 .join('');
             
-            iterations += 1;
+//             iterations += 1;
             
-            if (iterations > maxIterations) {
-                clearInterval(glitchInterval);
-                title.textContent = originalText;
-            }
-        }, 50);
-    });
+//             if (iterations > maxIterations) {
+//                 clearInterval(glitchInterval);
+//                 title.textContent = originalText;
+//             }
+//         }, 50);
+//     });
+// });
+
+
+// ✅ Robust glitch effect (no "stuck" text, no overlapping intervals)
+const running = new WeakMap();
+
+function randomChar() {
+  const chars =
+    '!@#$%^&*()_+{}|:"<>?[];\\\',./~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return chars[Math.floor(Math.random() * chars.length)];
+}
+
+function restore(el) {
+  const prev = running.get(el);
+  if (prev) {
+    clearInterval(prev);
+    running.delete(el);
+  }
+  el.textContent = el.dataset.original;
+}
+
+function glitch(el) {
+  // Always start from a clean state
+  restore(el);
+
+  const original = el.dataset.original ?? el.textContent;
+  el.dataset.original = original; // persist the true original once
+
+  let i = 0;
+  const max = original.length + 3; // a tiny buffer for nicer effect
+
+  const id = setInterval(() => {
+    // Build the current frame: left side "locks", right side glitches
+    const frame = original
+      .split("")
+      .map((ch, idx) => (idx < i ? original[idx] : randomChar()))
+      .join("");
+
+    el.textContent = frame;
+    i++;
+
+    if (i > max) {
+      restore(el); // ensure final is EXACT original
+    }
+  }, 40);
+
+  running.set(el, id);
+}
+
+// Hook up events
+document.querySelectorAll(".section-title").forEach((el) => {
+  if (!el.dataset.original) el.dataset.original = el.textContent;
+
+  el.addEventListener("mouseenter", () => glitch(el));
+  el.addEventListener("mouseleave", () => restore(el));
 });
 
 // ============================================
